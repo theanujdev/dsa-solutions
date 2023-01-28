@@ -22,14 +22,16 @@ class Solution:
     def findMin(self, nums) -> int:
         l, r = 0, len(nums)-1
         res = float("inf")
-        while l <= r:
-            index = (l+r)//2
+        while l < r:
+            index = (l + r) // 2
             res = min(res, nums[index])
-            if nums[index] >= nums[0]:
-                l = index+1
+            # right has the min
+            if nums[index] > nums[r]:
+                l = index + 1
+            # left has the  min
             else:
-                r = index-1
-        return min(res, nums[0])
+                r = index - 1
+        return min(res, nums[l])
 
 
 nums = [3, 4, 5, 1, 2]
